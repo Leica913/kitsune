@@ -9,6 +9,10 @@ class ArticlesController < ApplicationController
     @user = @article.user
   end
 
+  def new
+
+  end
+
   def index
     @articles = Article.all
     @article = Article.new

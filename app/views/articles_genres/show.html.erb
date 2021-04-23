@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-1">
+      <h2>ジャンル詳細</h2>
+      <table class="table table-inverse">
+        <thead>
+          <tr>
+            <th><%=@articles_genre.name%></th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <% @articles.each do |article| %>
+            <%if @articles_genre.id==article.articles_genre_id%>
+              <tr>
+                <td>
+                  <%= attachment_image_tag article, :image, :fill, 60, 60, fallback: "no_image.jpg",size:"40x40"  %>
+                </td>
+                <td>
+                  <%= link_to article_path(article) do %>
+                      <p><%= article.name%></p>
+                  <% end %>
+                </td>
+                <td>
+                  <p><%= article.about%></p>
+                </td>
+                <td>
+                  <p><%= article.articles_genre.name%></p>
+                </td>
+              </tr>
+            <% end %>
+        <% end %>
+      </table>
+     </div>
+  </div>
+</div>

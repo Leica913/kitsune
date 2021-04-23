@@ -1,0 +1,2 @@
+module ArticlesGenresHelper
+end
