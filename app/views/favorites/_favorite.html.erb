@@ -1,9 +1,11 @@
-    <% if article.favorited_by?(current_user) %>
-          <%= link_to article_favorites_path(article), method: :delete, remote: true do %>
-            ♥<%= article.favorites.count %>
-          <% end %>
-          <% else %>
-          <%= link_to article_favorites_path(article), method: :post, remote: true do %>
-            ♡<%= article.favorites.count %>
-          <% end %>
+<% if book.favorited_by?(current_user) %>
+    <%= link_to book_favorites_path(book), method: :delete, remote: true do %>
+        <i class="fa fa-heart"></i>
+        <%= book.favorites.count %>
     <% end %>
+<% else %>
+    <%= link_to book_favorites_path(book), method: :post, remote:true do %>
+        <i class="fa fa-heart-o"></i>
+        <%= book.favorites.count %>
+    <% end %>
+<% end %>

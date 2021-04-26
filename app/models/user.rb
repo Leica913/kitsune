@@ -2,38 +2,54 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :trackable,:validatable
 
-  has_many :articles, dependent: :destroy
+  has_many :books, dependent: :destroy
+
+  has_many :favorites, dependent: :destroy
+
+  has_many :book_comments, dependent: :destroy
+
+  has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  has_many :following_users, through: :follower, source: :followed
+  has_many :follower_users, through: :followed, source: :follower
+
+  def follow(user_id)
+    follower.create(followed_id: user_id)
+    #follow_user = current_user.follower.new(followed_id: user_id)
+    #follow_user.save
+  end
+
+  def unfollow(user_id)
+    follower.find_by(followed_id: user_id).destroy
+    #follow_user = current_user.follower.find_by(followed_id: user_id)
+    #follow_user.destroy
+  end
+
+  def following?(user)
+    following_users.include?(user)
+  end
+
+  def User.search(search, user_or_book, how_search)
+      
+      if how_search =="1"
+       User.where(name: search)
+
+      elsif how_search =="2"
+        User.where('name LIKE ?', search+'%')
+
+      elsif how_search =="3"
+        User.where('name LIKE ?', '%'+search)
+
+      else how_search =="4"
+        User.where('name LIKE ?', '%'+search+'%')
+      end
+  end
+
   attachment :profile_image, destroy: false
-  has_many :user_comments, dependent: :destroy
-  has_many :favorites
-  has_many :favorite_posts, through: :favorites, source: :post
-  has_many :posts
 
-  has_many :relationships, foreign_key: "user_id",
-                           dependent: :destroy
-  has_many :followings, through: :relationships, source: :follow
-  has_many :passive_relationships, class_name: "Relationship",
-                                   foreign_key: "follow_id",
-                                   dependent: :destroy
-  has_many :followers, through: :passive_relationships, source: :user
-
-  def following?(other_user)
-    self.followings.include?(other_user)
-  end
-
-  def follow(other_user)
-    unless self == other_user
-      self.relationships.find_or_create_by(follow_id: other_user.id)
-    end
-  end
-
-  def unfollow(other_user)
-    relationship = self.relationships.find_by(follow_id: other_user.id)
-    relationship.destroy if relationship
-  end
-
-  validates :name, length: {maximum: 20, minimum: 2}, uniqueness: true
-  validates :introduction, length: { maximum: 50 }
+  #バリデーションは該当するモデルに設定する。エラーにする条件を設定できる。
+  validates :name, presence: true, length: {maximum: 20, minimum: 2}
+  validates :introduction, length: {maximum: 50}
 end

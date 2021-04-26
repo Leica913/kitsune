@@ -1,17 +1,17 @@
 class FavoritesController < ApplicationController
 
   def create
-    @article = Article.find(params[:article_id])
-    favorite = current_user.favorites.new(article_id: @article.id)
+    @book = Book.find(params[:book_id])
+    favorite = current_user.favorites.new(book_id: params[:book_id])
     favorite.save
-    # redirect_to request.referer
+    render 'favorite'
   end
 
   def destroy
-    @book = Article.find(params[:article_id])
-    favorite = current_user.favorites.find_by(article_id: @article.id)
+    @book = Book.find(params[:book_id])
+    favorite = Favorite.find_by(book_id: params[:book_id], user_id: current_user.id)
     favorite.destroy
-    # redirect_to request.referer
+    render 'favorite'
   end
 
 end
