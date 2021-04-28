@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
-     <h1>Follow Users</h1>
+     <h1>フォロー中のユーザー</h1>
   </div>
   <div class="row">
     <table class="table">
       <thead>
       <tr>
-        <th><p>image</p></th>
-        <th><p>name</p></th>
+        <th><p>画像</p></th>
+        <th><p>名前</p></th>
       </tr>
     </thead>
     <tbody>
@@ -23,7 +23,7 @@
               <%= link_to "フォローする", follow_path(following.id), method: :post %>
             <% end %>
         </td>
-        <td><p><%= link_to "Show", user_path(following.id) %></p></td>
+        <td><p><%= link_to "詳細", user_path(following.id), class: "col-1 btn btn-warning mb-2 text-white" %></p></td>
       </tr>
       <% end %>
     </tbody>

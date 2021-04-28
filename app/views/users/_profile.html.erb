@@ -15,21 +15,21 @@
 			<th><%= user.follower.count %></th>
 		</tr>
 		<tr>
-			<th><%= link_to "フォロワー", followings_path(user_id: user.id) %></th>
+			<th><%= link_to "フォロワー", followers_path(user_id: user.id) %></th>
 			<th><%= user.followed.count %></th>
 		</tr>
 </table>
 
 <% if user == current_user %>
-<div class="row">
-	<%= link_to '',edit_user_path(user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{user.id}" %>
-</div>
+<!--<div class="row">-->
+<!--	<= link_to '',edit_user_path(user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{user.id}" %>-->
+<!--</div>-->
 <% else %>
 <div class="row">
 	<% if current_user.following?(user) %>
-		<%= link_to "フォローを外す", unfollow_path(user.id), method: :post, class: "col-xs-6　col-xs-offset-3 btn btn-primary" %>
+		<%= link_to "フォローを外す", unfollow_path(user.id), method: :post, class: "col-xs-6　col-xs-offset-3 btn btn-primary text-primaary" %>
 	<% else %>
-    <%= link_to "フォローする", follow_path(user.id), method: :post, class: "col-xs-6 col-xs-offset-3 btn btn-success" %>
+    <%= link_to "フォローする", follow_path(user.id), method: :post, class: "col-xs-6 col-xs-offset-3 btn btn-success text-primaary" %>
   <% end %>
 </div>
 <% end %>

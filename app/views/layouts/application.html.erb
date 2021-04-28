@@ -14,14 +14,6 @@
     <header>
       <nav class="navbar navbar-dark bg-dark">
         <a href="/" class="navbar-brand">Kitsune Information Room</a>
-        <button class="navbar-toggler" type="button"
-            data-toggle="collapse"
-            data-target="#navmenu1"
-            aria-controls="navmenu1"
-            aria-expanded="false"
-            aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
           <div class="search-form">
             <%= form_with url: search_path, method: :get, local: true do |f| %>
               <%= f.text_field :content %>
@@ -30,12 +22,19 @@
               <%= f.submit '検索' %>
             <% end %>
           </div>
+        <button class="navbar-toggler" type="button"
+            data-toggle="collapse"
+            data-target="#navmenu1"
+            aria-controls="navmenu1"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navmenu1">
           <div class="navbar-nav">
           <% if user_signed_in? %>
             <a class="nav-item nav-link"><%= link_to 'ホーム',root_path,class: 'fas fa-home nav-link text-light' %></a>
-            <a class="nav-item nav-link"><%= link_to ' ユーザー',users_path,class: 'fas fa-users nav-link text-light' %></a>
-            <a class="nav-item nav-link"><%= link_to ' 記事',books_path ,class: 'fas fa-book-open nav-link text-light'%></a>
+            <a class="nav-item nav-link"><%= link_to ' ユーザー編集',edit_user_path(current_user),class: 'fas fa-users nav-link text-light' %></a>
             <a class="nav-item nav-link"><%= link_to ' ログアウト', destroy_user_session_path, method: :delete,class: 'fas fa-sign-out-alt nav-link text-light' %></a>
           <% else %>
             <a class="nav-item nav-link"><%= link_to 'ホーム',root_path,class: 'fas fa-home nav-link text-light' %></a>

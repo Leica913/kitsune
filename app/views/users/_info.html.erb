@@ -1,3 +1,6 @@
-    <%= link_to "新しく作成", new_book_path(@book), class: "col col-xs-offset-2 btn btn-success" %>
-		<%= link_to "新着記事一覧", timeline_index_path, class: "col col-xs-offset-2 btn btn-info" %>
-		<%= link_to "お問い合わせ", new_contact_path, class: "col col-xs-offset-2 btn btn-warning" %>
+    <%= link_to "ユーザー一覧", users_path, class: "col btn btn-primary mb-2 text-white" %>
+    <%= link_to "記事一覧", books_path, class: "col btn btn-info mb-2 text-white" %>
+    <%= link_to "新着記事一覧", timeline_index_path, class: "col btn btn-info mb-2 text-white" %>
+    <%= link_to "記事を作成", new_book_path(@book), class: "col btn btn-success mb-2 text-white" %>
+    <%= link_to "お問い合わせ", new_contact_path, class: "col btn btn-warning mb-2 text-white" %>
+    <%= link_to "一つ前に戻る", :back, class: "col btn btn-secondary mb-2 text-white" %>

@@ -31,12 +31,12 @@
 			<td><p><%= "フォワー数: #{user.followed.count}" %></p></td>
 			<td>
 				<p><% if current_user.following?(user) %>
-				     <%= link_to "フォローを外す", unfollow_path(user.id), method: :post, class: "btn-sm btn-info" %>
+				     <%= link_to "フォローを外す", unfollow_path(user.id), method: :post, class: "btn-sm btn-info text-white" %>
 					 <% else %>
-					   <%= link_to "フォローする", follow_path(user.id), method: :post, class: "btn-sm btn-success" %>
+					   <%= link_to "フォローする", follow_path(user.id), method: :post, class: "btn-sm btn-success text-white" %>
 					  <% end %></p>
 			</td>
-			<td><%= link_to "詳細", user, class: "btn-sm btn-warning user_#{user.id}" %></td>
+			<td><%= link_to "詳細", user, class: "btn-sm btn-warning text-white user_#{user.id}" %></td>
 		</tr>
 		<% end %>
 	</tbody>
