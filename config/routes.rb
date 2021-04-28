@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   resources :contacts
-  post "contacts/thx" => "contacts#thx"
 
   devise_for :admins,
      path: 'auth',
@@ -45,4 +44,5 @@ Rails.application.routes.draw do
   post 'follow/:id' => 'relationships#follow', as: 'follow'
   post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
   get 'search' => 'search#search'
+  post "contacts/thx" => "contacts#thx"
 end
