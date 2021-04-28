@@ -22,7 +22,7 @@
             aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-          <div class="search-form mr-auto">
+          <div class="search-form">
             <%= form_with url: search_path, method: :get, local: true do |f| %>
               <%= f.text_field :content %>
               <%= f.select :model, options_for_select({ "ユーザー" => "user", "記事" => "book" }) %>

@@ -1,24 +1,34 @@
-# README
+# Kitsune's Information Room
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+ゲームをメインとした情報のやりとりとなる場で、
+ユーザーが情報発信することができ
+他のユーザーの上達の補助となるコミュニティサイト
 
-Things you may want to cover:
+### サイトテーマ
+攻略情報で上達できるゲームの情報交換サイト
 
-* Ruby version
+### テーマを選んだ理由
+- 自身の趣味がゲームであり人一倍強い思いから、いろいろな知識や技術をユーザー同士で共有・発信してもらう場として役に立てればと思いました。
+- 知らない知識や技術を広めることで、コミュニティサイトとして盛り上がり楽しく共有できると考えました。
 
-* System dependencies
+### ターゲットユーザ
+- 初心者の方など上達を目指す人
+- ゲーム情報の場でコミュニティを盛り上げたい人
+- 自身の腕前(知識や技術)を広めたい人
 
-* Configuration
+### 主な利用シーン
+自身のスキルを上達させたい、攻略を知りたい時など
 
-* Database creation
+## 機能一覧
+https://docs.google.com/spreadsheets/d/1FDCe52ZZtJDAy4sWTWL88peJdX5cNISkrauFRF10DRw/edit#gid=0
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
+-
+## 使用素材
+著作権によりゲームのスクリーンショットは掲載しない方針です。
