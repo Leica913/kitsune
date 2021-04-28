@@ -43,6 +43,6 @@ Rails.application.routes.draw do
   get 'users/:user_id/followers' => 'relationships#follower', as: 'followers'
   post 'follow/:id' => 'relationships#follow', as: 'follow'
   post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
-  get 'search' => 'search#search'
   post "contacts/thx" => "contacts#thx"
+  get 'search' => 'search#search'
 end
