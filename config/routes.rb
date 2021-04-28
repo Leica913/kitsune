@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users,only: [:show,:index,:edit,:update, :new]
+  resources :users,only: [:show,:index,:edit,:update,:new,:follow]
+
+  namespace :admin do
+    resources :users
+  end
 
   resources :books do
    resource :favorites, only: [:create, :destroy]
    resources :book_comments, only: [:create, :destroy]
- end
+  end
+
+  resources :timeline
 
   root 'home#top'
   get 'home/about'

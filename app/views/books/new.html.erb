@@ -10,7 +10,7 @@
 <% end %>
 
 
-<%= form_with model:@book, local:true do |f| %>
+<%= form_with model: @book, local:true do |f| %>
   <div class="form-group">
     <%= f.label :タイトル %>
     <%= f.text_field :title, class: 'form-control book_title' %>
@@ -19,10 +19,10 @@
     <%= f.label :本文 %>
     <%= f.text_area :body, class: 'form-control book_body' %>
   </div>
-    <div class="form-group">
-    <%= f.label :タグ %>
-    <%= f.text_field :tag_name, class: 'form-control book_tag_name' %>
-  </div>
+  <!--<div class="form-group">-->
+  <!--  <= f.label :タグ %>-->
+  <!--  <= f.text_field :tag_name, class: 'form-control book_tag_name' %>-->
+  <!--</div>-->
   <div class="form-group">
     <%= f.submit class: 'btn btn-success' %>
   </div>

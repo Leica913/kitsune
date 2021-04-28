@@ -7,7 +7,8 @@
 
 		<!--<h2>New book</h2>-->
 		<!--<= render 'books/newform', book: Book.new %>-->
-		<%= link_to "新規記事", new_book_path(@book), class: "col col-xs-offset-2 btn btn-info" %>
+		<%= link_to "新しく作成", new_book_path(@book), class: "col col-xs-offset-2 btn btn-success" %>
+		<%= link_to "新着記事一覧", timeline_index_path, class: "col col-xs-offset-2 btn btn-info" %>
   </div>
 
 <div class="col-xs-9">
