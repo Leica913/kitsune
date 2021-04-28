@@ -1,0 +1,14 @@
+<h3 style="color:#694d49;">送信完了しました。</h3>
+<h4>お問い合わせありがとうございます。</h4>
+
+<br>
+	<h6>このページはあと５秒でトップページに移動します。
+		移動しない場合は<%= link_to 'こちら', books_path %></h6>
+
+</div>
+
+<script>
+	setTimeout(function() {
+		window.location.href = "/books";
+	}, 5*1000);
+</script>

@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable,:validatable
+        :recoverable, :rememberable, :trackable, :validatable
 
   has_many :books, dependent: :destroy
 
@@ -15,7 +15,7 @@ class User < ApplicationRecord
   has_many :following_users, through: :follower, source: :followed
   has_many :follower_users, through: :followed, source: :follower
 
-  has_many :contact, dependent: :destroy
+  has_many :contacts, dependent: :destroy
 
   def follow(user_id)
     follower.create(followed_id: user_id)
@@ -33,20 +33,16 @@ class User < ApplicationRecord
     following_users.include?(user)
   end
 
-  def User.search(search, user_or_book, how_search)
-
-      if how_search =="1"
-       User.where(name: search)
-
-      elsif how_search =="2"
-        User.where('name LIKE ?', search+'%')
-
-      elsif how_search =="3"
-        User.where('name LIKE ?', '%'+search)
-
-      else how_search =="4"
-        User.where('name LIKE ?', '%'+search+'%')
-      end
+  def self.search_for(content, method)
+    if method == 'perfect'
+      User.where(name: content)
+    elsif method == 'forward'
+      User.where('name LIKE ?', content + '%')
+    elsif method == 'backward'
+      User.where('name LIKE ?', '%' + content)
+    else
+      User.where('name LIKE ?', '%' + content + '%')
+    end
   end
 
   attachment :profile_image, destroy: false

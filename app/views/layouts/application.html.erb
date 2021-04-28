@@ -22,14 +22,14 @@
             aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="class: 'form-control' mr-auto">
-          <%= form_with url:search_path, method: :get, local: true do |f| %>
-          <%= f.text_field 'search[value]' %>
-          <%= f.select 'search[model]', options_for_select({ "ユーザー" => "user", "記事" => "book" }) %>
-          <%= f.select 'search[how]', options_for_select({ "完全一致" => "match", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partical"  }) %>
-          <%= f.submit :"検索" %>
+          <div class="search-form mr-auto">
+            <%= form_with url: search_path, method: :get, local: true do |f| %>
+              <%= f.text_field :content %>
+              <%= f.select :model, options_for_select({ "ユーザー" => "user", "記事" => "book" }) %>
+              <%= f.select :method, options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial" }) %>
+              <%= f.submit '検索' %>
+            <% end %>
           </div>
-          <% end %>
         <div class="collapse navbar-collapse" id="navmenu1">
           <div class="navbar-nav">
           <% if user_signed_in? %>

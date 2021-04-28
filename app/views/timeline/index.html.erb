@@ -1,6 +1,6 @@
 <div class='container px-5 px-sm-0'>
 <div class="row">
-	<div class="col-xs-3 sidebar_fixed">
+	<div class="col-3 sidebar_fixed">
 
 
 		<%= render 'users/profile', user: current_user %>
@@ -8,8 +8,7 @@
 
 		<!--<h2>新規作成</h2>-->
 		<!--<= render 'books/newform', book: Book.new %>-->
-		<%= link_to "新しく作成", new_book_path(@book), class: "col col-xs-offset-2 btn btn-success" %>
-		<%= link_to "新着記事一覧", timeline_index_path, class: "col col-xs-offset-2 btn btn-info" %>
+		<%= render 'users/info', user: current_user %>
 
 	</div>
 
