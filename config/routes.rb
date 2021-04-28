@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  resources :contacts
   devise_for :users
+  devise_for :admins
   resources :users,only: [:show,:index,:edit,:update,:new,:follow]
 
   namespace :admin do
@@ -7,8 +10,8 @@ Rails.application.routes.draw do
   end
 
   resources :books do
-   resource :favorites, only: [:create, :destroy]
-   resources :book_comments, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
+    resources :book_comments, only: [:create, :destroy]
   end
 
   resources :timeline

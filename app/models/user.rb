@@ -15,6 +15,8 @@ class User < ApplicationRecord
   has_many :following_users, through: :follower, source: :followed
   has_many :follower_users, through: :followed, source: :follower
 
+  has_many :contact, dependent: :destroy
+
   def follow(user_id)
     follower.create(followed_id: user_id)
     #follow_user = current_user.follower.new(followed_id: user_id)
@@ -32,7 +34,7 @@ class User < ApplicationRecord
   end
 
   def User.search(search, user_or_book, how_search)
-      
+
       if how_search =="1"
        User.where(name: search)
 

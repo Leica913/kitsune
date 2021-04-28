@@ -1,0 +1,41 @@
+<div class="row">
+<div class="col-5">
+<%= form_with(url: users_path, local: true) do |form| %>
+  <% if contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+
+      <ul>
+      <% contact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :名前 %>
+    <%= form.text_field :name, class: 'form-control book_name' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :メールアドレス %>
+    <%= form.text_field :email, class: 'form-control book_email' %>
+  </div>
+
+</div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <div class="field">
+      <%= form.label :お問い合わせ内容 %>
+      <%= form.text_area :content, class: 'form-control book_content' %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+  </div>
+</div>
