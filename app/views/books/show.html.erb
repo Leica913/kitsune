@@ -31,9 +31,9 @@
 					<td><p>コメント件数：<%= @post_book.book_comments.count %></p></td>
 					<% if @post_book.user_id == current_user.id %>
 					<td>
-						  <%= link_to "Edit",edit_book_path(@post_book), class: "btn-sm btn-success edit_book_#{@post_book.id}" %>
+						  <%= link_to "編集",edit_book_path(@post_book), class: "btn-sm btn-success text-white edit_book_#{@post_book.id}" %>
 						  </td>
-					<td><%= link_to "Destroy",book_path(@post_book), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_book_#{@post_book.id}" %></td>
+					<td><%= link_to "削除",book_path(@post_book), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger text-white destroy_book_#{@post_book.id}" %></td>
 					<% end %>
 				</tr>
 			</table>
