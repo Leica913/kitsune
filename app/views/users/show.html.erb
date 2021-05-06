@@ -13,20 +13,22 @@
 
 <div class="col" style='margin-top: 5px;'>
 	<tr>
-		<th><h3><%= attachment_image_tag current_user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %>
-						<%= current_user.name %>さん</h3></th>
+		<th><h3><%= link_to (@user) do %>
+						<%= attachment_image_tag current_user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %>
+						<%= @user.name %>さん</h3></th>
+						<% end %>
 		</tr>
 
 			<th></th>
 
 		<tr>
 			<th>自己紹介</th>
-			<th><%= current_user.introduction %></th>
+			<th><%= @user.introduction %></th>
 		</tr>
 
 <div>
 	<div class="col" style='margin-top: 50px;'>
-		<h3><%= current_user.name %>さんの記事一覧</h3>
+		<h3><%= @user.name %>さんの記事一覧</h3>
 	<!--books一覧 -->
 	<table class="table table-hover table-inverse">
 		<thead>

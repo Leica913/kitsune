@@ -36,7 +36,7 @@
 					   <%= link_to "フォローする", follow_path(user.id), method: :post, class: "btn-sm btn-success text-white" %>
 					  <% end %></p>
 			</td>
-			<td><%= link_to "詳細", user, class: "btn-sm btn-warning text-white user_#{user.id}" %></td>
+			<td><%= link_to "詳細", user_path(user.id), class: "btn-sm btn-warning text-white user_#{user.id}" %></td>
 		</tr>
 		<% end %>
 	</tbody>

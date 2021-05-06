@@ -45,4 +45,8 @@ Rails.application.routes.draw do
   post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
   post "contacts/thx" => "contacts#thx"
   get 'search' => 'search#search'
+
+  resources :tags do
+    get 'books', to: 'books#search'
+  end
 end
