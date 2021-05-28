@@ -16,6 +16,7 @@ class BooksController < ApplicationController
   def index
     @book = Book.new
     @books = Book.all #一覧表示するためにBookモデルの情報を全てくださいのall
+    @booktag = Book.includes(:user,:tags).all.order('created_at DESC') #タグ付け
   end
 
 
@@ -23,7 +24,7 @@ class BooksController < ApplicationController
     @book = Book.new(book_params) #Bookモデルのテーブルを使用しているのでbookコントローラで保存する。
     @book.user_id = current_user.id
     if @book.save #入力されたデータをdbに保存する。
-      redirect_to book_path(@book.id), notice: "successfully created book!"#保存された場合の移動先を指定。
+      redirect_to book_path(@book.id), notice: "投稿が完了しました。"#保存された場合の移動先を指定。
     else
       @books = Book.all
       render 'index'
@@ -51,10 +52,12 @@ class BooksController < ApplicationController
   end
 
 
+
   private
 
   def book_params
-    params.require(:book).permit(:title, :body)
+    #tag_listをpermitに追加
+    params.require(:book).permit(:title, :body, :tag_list).merge(user_id: current_user.id)
   end
 
   def baria_book
@@ -62,6 +65,10 @@ class BooksController < ApplicationController
     unless book.user_id == current_user.id
       redirect_to books_path
     end
+  end
+
+  def set_book
+    @book = Book.find(params[:id])
   end
 
 end
