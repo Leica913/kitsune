@@ -6,6 +6,10 @@ class BooksController < ApplicationController
     @book = Book.new
   	@post_book = Book.find(params[:id])
     @book_comment = BookComment.new
+    @task = Book.includes(:user,:tags).all.order('created_at DESC') #タグ付け
+    if params[:tag_name]
+      @tasks = Book.tagged_with("#{params[:tag_name]}")
+    end
     #@book_comments = @post_book.book_comments.order(created_at: :desc)
   end
 
@@ -14,9 +18,11 @@ class BooksController < ApplicationController
   end
 
   def index
-    @book = Book.new
     @books = Book.all #一覧表示するためにBookモデルの情報を全てくださいのall
-    @booktag = Book.includes(:user,:tags).all.order('created_at DESC') #タグ付け
+    @book = Book.includes(:user,:tags).all.order('created_at DESC') #タグ付け
+    if params[:tag_name]
+      @books = Book.tagged_with("#{params[:tag_name]}")
+    end
   end
 
 

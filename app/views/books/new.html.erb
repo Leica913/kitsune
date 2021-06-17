@@ -20,7 +20,7 @@
     <%= f.text_area :body, class: 'form-control text-break book_body' %>
   </div>
   <div class="form-contents_tag">
-    <%= f.label :tag_list %>
+    <%= f.label :タグ %>
     <%= f.text_field :tag_list, value: @book.tag_list.join(","), autocomplete: "tag", class: "tag-field", placeholder:'タグを入力してください' %>
   </div>
   <!--<div class="form-group">-->

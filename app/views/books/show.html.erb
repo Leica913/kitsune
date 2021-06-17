@@ -20,6 +20,10 @@
 						<%= link_to (@post_book.user) do %>
 						<%= attachment_image_tag(@post_book.user, :profile_image, :fill, 100, 100, fallback: "no-image-mini.jpg") %>
 						<%= @post_book.user.name %>
+							@tasks.each do |task|
+     <tr id="task-#{task.id}"></tr>
+        td= link_to task.name, task_path(task)
+        td= task.created_at
 						<% end %>
 					</td>
 
