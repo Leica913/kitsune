@@ -1,2 +1,23 @@
-<h1>welcome to<span class="glyphicon glyphicon-book"></span>
-<strong>Kitune Information Room</strong>  !!</h1>
+<div class="container">
+<div class="row">
+	<div class="col">
+		<h1>welcome to<span class="glyphicon glyphicon-book"></span>
+			<strong> ★Kitsune Information Room</strong></h1>
+			<br><p>　このサイトでは攻略情報で上達できる</p>
+			<p>　ゲームの情報交換を目的としたサイトです。</p>
+			<p><br>　　</strong>ユーザー同士で記事を投稿し合い</p>
+			<p>　　ゲームの評価や情報共有を得ることができます。</p>
+			<p>　　みんなで共有し合って有利に進めて盛り上がりましょう！</p>
+			<br>
+
+			<div class="btn-wrapper col-5 mx-auto">
+				<div class="row">
+					<%=link_to "ログイン", new_user_session_path, class: "btn btn-info btn-md btn-block text-white mb-3 sign_in" %>
+				</div>
+				<div class="row">
+					<%=link_to "新規登録", new_user_registration_path, class: "btn btn-success btn-md btn-block text-white sign_up" %>
+				</div>
+			</div>
+
+	</div>
+</div>
